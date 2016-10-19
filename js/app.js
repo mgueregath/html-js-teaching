@@ -1,5 +1,3 @@
-var basePath= "http://146.83.216.162:8080/";
-
 var data = [
     "Nombre 1",
     "Nombre 2",
@@ -9,8 +7,12 @@ var data = [
     "Nombre 6",
 ];
 
+var a = {
+    name: "Nombre",
+};
+
 var addCard = function (firstName) {
-    var card = '<div  class="col s4">' +
+    var card = '<div class="col s4">' +
         '<div class="card small">' +
         '<div class="card-image">' +
         '<img src="http://www.imagen.com.mx/assets/img/imagen_share.png">' +
@@ -20,7 +22,7 @@ var addCard = function (firstName) {
         '<p>Contenido de la tarjeta</p>' +
         '</div>' +
         '<div class="card-action">' +
-        '<a href="#">Borrar</a>' +
+        '<a href="#" class="delete">Borrar</a>' +
         '</div>' +
         '</div>' +
         '</div>';
@@ -28,6 +30,43 @@ var addCard = function (firstName) {
 };
 
 $(document).ready(function (){
+    //$('.modal-trigger').leanModal();
     
-    $('.modal-trigger').leanModal();
+    //Contenido de la clase
+    $("#show-btn").click( function() {
+        for (var i = 0; i < data.length; i++) {
+            addCard(data[i]);
+        }
+        
+        $(".delete").click( function () {
+            $(this).parent().parent().parent().remove();
+        });
+        
+        $(".card.small").dblclick(function () {
+            $(this).parent().remove();
+        });
+    });
+    
+    $("#clean-btn").click(function () {
+        $("#wrapper").empty();
+    });
+    
+    //Contenido de la clase
+    
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
